@@ -7,13 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec npx babel-node -- ./src",
     "build": "babel ./src -d lib",
-    "mongo:start": "docker run --name mongodb -p 27017:27017 mongo",
+    "mongo:start": "docker run -d --name mongodb -p 27017:27017 mongo",
     "mongo:stop": "docker stop mongodb && docker rm mongodb"
   },
   "keywords": [],
   "author": "Ronald Huggler (@rHuggler)",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.11"
   },
