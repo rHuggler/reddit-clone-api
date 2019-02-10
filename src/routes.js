@@ -2,9 +2,9 @@ const express = require('express')
 
 const routes = express.Router()
 
-const { basicController } = require('./controllers/basicController')
+const { userController } = require('./controllers/userController')
 
-routes.get('/', basicController.get)
+routes.post('/user', userController.post)
 
 module.exports = {
     routes
