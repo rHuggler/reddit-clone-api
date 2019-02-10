@@ -30,6 +30,27 @@ const postController = {
                     message: err
                 })
             })
+    },
+
+    getAll: (req, res) => {
+
+        Post.find()
+            .populate({
+                path: '_creator',
+                select: 'username -_id'
+            })
+            .then((posts) => {
+                res.status(200).send({
+                    success: true,
+                    data: posts
+                })
+            })
+            .catch((err) => {
+                res.status(500).send({
+                    success: false,
+                    message: err
+                })
+            })
     }
 }
 
