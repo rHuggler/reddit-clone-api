@@ -30,7 +30,12 @@ const postSchema = new Schema({
     _creator: {
         type: Schema.ObjectId,
         ref: 'User'
-    }
+    },
+
+    _comments: [{
+        type: Schema.ObjectId,
+        ref: 'Comment'
+    }]
 
 })
 
@@ -42,7 +47,17 @@ const populateCreator = function(next){
     next()
 }
 
+const populateComments = function(next){
+    this.populate({
+        path: '_comments',
+        select: 'text _creator -_id',
+        match: { isDeleted: false }
+    })
+    next()
+}
+
 postSchema.pre('find', populateCreator)
+postSchema.pre('find', populateComments)
 
 const Post = mongoose.model('Post', postSchema)
 
