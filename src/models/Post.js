@@ -34,6 +34,16 @@ const postSchema = new Schema({
 
 })
 
+const populateCreator = function(next){
+    this.populate({
+        path: '_creator',
+        select: 'username -_id'
+    })
+    next()
+}
+
+postSchema.pre('find', populateCreator)
+
 const Post = mongoose.model('Post', postSchema)
 
 module.exports = {

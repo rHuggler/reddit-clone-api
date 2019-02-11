@@ -35,10 +35,6 @@ const postController = {
     getAll: (req, res) => {
 
         Post.find()
-            .populate({
-                path: '_creator',
-                select: 'username -_id'
-            })
             .then((posts) => {
                 res.status(200).send({
                     success: true,
