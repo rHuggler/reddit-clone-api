@@ -8,7 +8,8 @@
     "dev": "nodemon --exec npx babel-node -- ./src",
     "build": "babel ./src -d lib",
     "mongo:start": "docker run -d --name mongodb -p 27017:27017 mongo",
-    "mongo:stop": "docker stop mongodb && docker rm mongodb"
+    "mongo:stop": "docker stop mongodb && docker rm mongodb",
+    "mongo:repl": "docker exec -it mongodb mongo"
   },
   "keywords": [],
   "author": "Ronald Huggler (@rHuggler)",
